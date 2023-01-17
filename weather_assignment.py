@@ -31,6 +31,7 @@ with open('result.json', 'w') as file:
 
 #part 2
 
+
     
 
 
