@@ -30,8 +30,44 @@ with open('result.json', 'w') as file:
         #total_monthly_precipitation, file, indent=4, sort_keys=True)
 
 #part 2
+sum=0
+for data in total_monthly_precipitation:
+    sum+=data
+total_yearly_precipation=sum
+
+with open('result.json', 'w') as file:
+    json.dump({
+        "Seattle":{
+            "station": "GHCND:USW00093814",
+            "State": "Washington",
+            "total_monthly_precipitation": [total_monthly_precipitation],
+            "total_yearly_precipitation": [total_yearly_precipation]
+        }
+    }, file, indent=4, sort_keys=True) 
+
+relative_monthly_precipitation_list=[]
+for data in total_monthly_precipitation:
+    relative_monthly_precipitation=data/total_yearly_precipation
+    relative_monthly_precipitation_list.append(relative_monthly_precipitation)
+print(relative_monthly_precipitation_list)
 
 
+with open('result.json', 'w') as file:
+    json.dump({
+        "Seattle":{
+            "station": "GHCND:USW00093814",
+            "State": "Washington",
+            "total_monthly_precipitation": [total_monthly_precipitation],
+            "total_yearly_precipitation": [total_yearly_precipation],
+            "relative_monthly_precipitation": [relative_monthly_precipitation_list]
+        }
+    }, file, indent=4, sort_keys=True) 
+
+
+#relative_monthly_precipitation= total_monthly_precipitation/total_yearly_precipation
+
+#total_yearly_precipitation=total_monthly_precipitation)
+#print(total_monthly_precipitation)
     
 
 
